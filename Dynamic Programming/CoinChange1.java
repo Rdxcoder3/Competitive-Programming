@@ -14,22 +14,24 @@ public class CoinChange1 {
         int n = scan.nextInt();
 
         System.out.println("Enter coin change:");
-        int[] arr = new int[n];
+        int[] coin = new int[n];
         
         for(int i=0;i<n;i++){
-            arr[i] = scan.nextInt();
+            coin[i] = scan.nextInt();
         }
 
-        System.out.println("Enter the Amount:");
+        System.out.println("Enter the Target Amount:");
         int amt = scan.nextInt();
 
         int[] dp = new int[amt+1];
 
         dp[0] = 1;
 
-        for(int i=0;i<arr.length;i++){
-            for(int j=arr[i];j<=amt;j++){
-                dp[j] += dp[j - arr[i]];
+        for(int i=0;i<coin.length;i++){
+            
+            for(int j=coin[i];j<=amt;j++){
+                
+                dp[j] += dp[j - coin[i]];
             }
         }
         
